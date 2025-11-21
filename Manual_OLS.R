@@ -2,7 +2,7 @@
 library(readxl) # to read excel files into R
 #-------------------------------------------------------------------------------
 # Open data file
-vacation = read_excel("/Users/bolekcolin13/Desktop/Coding Portfolio/vacation (corresponding to manual OLS).xlsx")
+vacation = read_excel("pathname{vacation.xlsx}")
 
 # Subset data frame to get matrix of independent variables and reponses
 vacation_X = as.matrix(vacation[2:5])
