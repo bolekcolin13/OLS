@@ -52,25 +52,24 @@ sandwich_hc1 = sandwich * (length(vacation_y)/(length(vacation_y)-
                                                  length(vacation_beta_hat)))
 se_vacation_robust = as.matrix(sqrt(diag(sandwich_hc1)))
 
-# Conduct significance testing on \beta and save all values for later table
+# Conduct (robust) significance testing on \beta and save all values for later 
+#table
+degree = as.numeric(length(vacation_y) - length(vacation_beta_hat))
+# standard, non-robust errors
 p_values = c()
 t_values = c()
 for (i in 1:length(vacation_beta_hat)) {
   t_stat = as.numeric(vacation_beta_hat[i,1]/se_vacation[i,1])
   t_values = c(t_values, t_stat)
-  degree = as.numeric(length(vacation_y) - length(vacation_beta_hat))
   t_prob = 2*pt(abs(t_stat), degree, lower.tail = FALSE)
   p_values = c(p_values, t_prob)
 }
-
-# Conduct significance testing on \beta using robust standard errors and save
-# all values for later table
+# robust errors
 p_values_robust = c()
 t_values_robust = c()
 for (i in 1:length(vacation_beta_hat)) {
   t_stat_robust = as.numeric(vacation_beta_hat[i,1]/se_vacation_robust[i,1])
   t_values_robust = c(t_values_robust, t_stat_robust)
-  degree_robust = as.numeric(length(vacation_y) - length(vacation_beta_hat))
   t_prob_robust = 2*pt(abs(t_stat_robust), degree, lower.tail = FALSE)
   p_values_robust = c(p_values_robust, t_prob_robust)
 }
