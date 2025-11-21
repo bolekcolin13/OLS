@@ -4,7 +4,7 @@ An ongoing project of manually coding linear models and comparing them to result
 
 ## Manual OLS in R
 
-A project from a course in econometrics, ```Manual_OLS.R``` uses a data set of 200 Chicago families to determine if there exists a relationship between the miles traveled by those families in a year for vacation and a number of relevant variables. The model used is a standard linear specification and includes both homoskedastic and heteroskedastic robust (HC1, specifically) standard errors. 
+A project from a course in econometrics, ```Manual_OLS.R``` uses a data set of 200 Chicago families to determine if there exists a relationship between the miles traveled by those families in a year for vacation and a number of relevant variables; data available as ```vacation.xlsx``` in this repository. The model used is a standard linear specification and includes both homoskedastic and heteroskedastic robust (HC1, specifically) standard errors. 
 
 ## Manual OLS in General, R
 
