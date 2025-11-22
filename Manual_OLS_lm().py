@@ -6,7 +6,7 @@ from scipy import stats # for p-values
 import statsmodels.formula.api as smf # to verify accuracy of manual output
 
 # Read in the data
-vacation = pd.read_excel("/Users/bolekcolin13/Desktop/Coding Portfolio/vacation (corresponding to manual OLS).xlsx")
+vacation = pd.read_excel("pathname{vacation.xlsx}")
 
 # Subset the data into vector of dependent responses and matrix of independent 
 # variables and convert to numpy array
