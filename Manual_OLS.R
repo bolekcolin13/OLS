@@ -4,13 +4,13 @@ library(readxl) # to read excel files into R
 # Open data file
 vacation = read_excel("pathname{vacation.xlsx}")
 
-# Subset data frame to get matrix of independent variables and reponses
+# Subset data frame to get matrix of explanatory variables
 vacation_X = as.matrix(vacation[2:5])
 
-# Subset data frame to get vector of dependent responses
+# Subset data frame to get vector of responses
 vacation_y = as.matrix(vacation[1])
 
-# Create vector of covariates
+# Create vector of predictors, \beta
 vacation_XTX_inverse = solve(t(vacation_X) %*% vacation_X) # (X'X)^(-1)
 vacation_XTy = t(vacation_X) %*% vacation_y # X'y
 vacation_beta_hat = vacation_XTX_inverse %*% vacation_XTy # (X'X)^(-1)X'y 
@@ -33,13 +33,13 @@ SSE = as.numeric(t(vacation_y - vacation_y_hat) %*% (vacation_y -
 vacation_errors = vacation_y - vacation_y_hat
 SSE == as.numeric(t(vacation_errors) %*% vacation_errors)
 
-# Calculate R^2 and adjusted R^2
+# Calculate R^2 and adjusted R^2 for model evaluation
 R2 = 1 - (SSE/SST)
 SSE_Adjusted = SSE/(length(vacation_y) - length(vacation_beta_hat))
 SST_Adjusted = SST/(length(vacation_y) - 1)
 R2_Adjusted = 1 - (SSE_Adjusted/SST_Adjusted)
 
-# Calculate variance and std. errors of covariate vector \beta
+# Calculate variance and std. errors of predictor vector \beta
 sigma2_hat = SSE/(length(vacation_y) - length(vacation_beta_hat)) 
 beta_var = sigma2_hat * vacation_XTX_inverse
 se_vacation = as.matrix(sqrt(diag(beta_var)))
