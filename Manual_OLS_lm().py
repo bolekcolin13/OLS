@@ -9,11 +9,11 @@ import statsmodels.formula.api as smf # to verify accuracy of manual output
 vacation = pd.read_excel("pathname{vacation.xlsx}")
 
 # Subset the data into vector of dependent responses and matrix of independent 
-# variables and convert to numpy array
+# explanatory variables, then convert to numpy array
 vacation_y = vacation["miles"].to_numpy()
 vacation_X = vacation[["cons", "income", "age", "kids"]].to_numpy()
 
-# Create vector of covariates, \beta.
+# Create vector of predictors, \beta.
 vacation_XTX_inverse = np.linalg.inv(vacation_X.T @ vacation_X)
 vacation_XTy = vacation_X.T @ vacation_y
 vacation_beta_hat = vacation_XTX_inverse @ vacation_XTy
